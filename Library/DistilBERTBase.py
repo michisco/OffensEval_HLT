@@ -370,11 +370,11 @@ def predict(models, test_dataloader, hparams):
 
   y_predict = np.array(y_predict)
 
+  #Argmax across classes
   for i in range(y_predict.shape[1]):
     counts = np.bincount(y_predict[:,i])
     results.append(np.argmax(counts))
     
-  #Argmax across classes
   return results
  
 def run_with_kfold(in_ids_train, att_mask_train, test_dataloader, db_kfold_labels, test_labels, hparams = None, label_name = ["Not Off", "Off"]):
